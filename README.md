@@ -97,10 +97,48 @@ Todos os exemplos compilados são guardados na pasta Results, sendo que nesta pa
 
 ## Contribuições
 
+- Alexandre Pedro Ribeiro
+
+      - Análise Semântica ( Redução de frações de dimensões )
+      - Alterações na gramática principal
+      - Relatório
+      - Documentação adicional
+
 - André Almeida Oliveira
 
       - Gramática principal da linguagem (Compiler)
       - Análise Semântica (Compiler)
-      - Geração de código do compilador (Compiler)
-      - Documentação
+      - Geração de código (Compiler)
+      - Exemplos
+      - Relatório
+      - Documentação adicional
 
+- Bernardo Leitão da Costa Pinto
+
+      - Análise Semântica (Compiler)
+      - Relatório
+      - Documentação adicional
+
+- Filipe de Ornelas Diogo Obrist
+
+      - Análise Semântica (Compiler)
+      - Relatório
+      - Documentação adicional
+
+- José Pedro Santos Mendes
+
+      - Gramática para preprocessamento da linguagem (Precompiler)
+      - Geração de ficheiro temporário com o código preprocessado (Precompiler)
+      - Gramática principal da linguagem (Compiler)
+      - Geração de código do compilador (Compiler)
+      - Relatório
+      - Documentação adicional
+
+- Rodrigo Silva Aguiar
+
+      - Análise Semantica (Compiler)
+      - Geração de código (Compiler)
+      - Alterações na gramática principal
+      - Exemplos
+      - Relatório
+      - Documentação adicional
