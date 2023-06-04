@@ -5,12 +5,12 @@
 
 | NMec | Nome | email | Participação |
 |:---:|:---|:---|:---:|
-| 108122 | ALEXANDRE PEDRO RIBEIRO | alexandrepribeiro@ua.pt | 0.0% |
-| 107637 | ANDRÉ ALMEIDA OLIVEIRA | andreaoliveira@ua.pt | 0.0% |
-| 105926 | BERNARDO LEITÃO DA COSTA PINTO | bernardopinto@ua.pt | 0.0% |
-| 107471 | FILIPE DE ORNELAS DIOGO OBRIST | filipe.obrist@ua.pt | 0.0% |
-| 107188 | JOSÉ PEDRO SANTOS MENDES | mendes.j@ua.pt | 0.0% |
-| 108969 | RODRIGO SILVA AGUIAR | rodrigoaguiar96@ua.pt | 0.0% |
+| 108122 | ALEXANDRE PEDRO RIBEIRO | alexandrepribeiro@ua.pt | 8.0% |
+| 107637 | ANDRÉ ALMEIDA OLIVEIRA | andreaoliveira@ua.pt | 23.0% |
+| 105926 | BERNARDO LEITÃO DA COSTA PINTO | bernardopinto@ua.pt | 8.0% |
+| 107471 | FILIPE DE ORNELAS DIOGO OBRIST | filipe.obrist@ua.pt | 8.0% |
+| 107188 | JOSÉ PEDRO SANTOS MENDES | mendes.j@ua.pt | 23.0% |
+| 108969 | RODRIGO SILVA AGUIAR | rodrigoaguiar96@ua.pt | 30.0% |
 
 ## Estrutura do repositório
 
@@ -97,5 +97,10 @@ Todos os exemplos compilados são guardados na pasta Results, sendo que nesta pa
 
 ## Contribuições
 
-- Use esta secção para expôr as contribuições individuais dos vários elementos do grupo e que
-  justificam as participações individuais globais apresentadas no início.
+- André Almeida Oliveira
+
+      - Gramática principal da linguagem (Compiler)
+      - Análise Semântica (Compiler)
+      - Geração de código do compilador (Compiler)
+      - Documentação
+
