@@ -92,6 +92,9 @@ Exemplo de utilização:
 
 ``` ./run.sh example1Compiled ```
 
+
+Todos os exemplos compilados são guardados na pasta Results, sendo que nesta pasta também se encontra a classe DimensionVar, utilizada para representar variáveis de dimensões.
+
 ## Contribuições
 
 - Use esta secção para expôr as contribuições individuais dos vários elementos do grupo e que
