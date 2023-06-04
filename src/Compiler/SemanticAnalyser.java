@@ -81,6 +81,11 @@ public class SemanticAnalyser extends dimanaBaseVisitor<Boolean> {
                return false;
             }
 
+         if (!ctx.dataType().type.equals("integer") && !ctx.dataType().type.equals("real")) {
+            ErrorHandling.printError(ctx, "Unit " + ctx.ID(0) + " cannot be of type " + ctx.dataType().type);
+            return false;
+         }
+
             // independent units with suffix given
             varMap.put(ctx.ID(0).getText(), new ArrayList<String>() {
                {

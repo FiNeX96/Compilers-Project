@@ -25,7 +25,72 @@
 
 ## Relatório
 
-- Use esta secção para fazer um relatório sucinto mas explicativo dos objetivos concretizados.
+O objetivo geral deste trabalho era o desenvolvimento
+de uma linguagem de programação compilada que permitisse
+o uso de análise dimensional nas expressões numéricas.
+Pretende-se estender o sistema de tipos de uma linguagem de
+programação com a possibilidade de definir dimensões distintas 
+a expressões numéricas (ex. definir undidade metro e segundo ou 
+definir velocidade como distancia/tempo). O sistema de tipos de 
+linguagem também deve permitir álgebra sobre dimensões, assim como a 
+validação da mesma. Para tal, foi necessário aplicar uma álgebra
+dimensional com regras de:
+
+- comparações, atribuições de valor, somas e subtracções apenas para a mesma dimensão;
+
+- multiplicações e divisões aplicáveis a expressões dimensionais a gerar outra dimensão;
+
+- multiplicações e divisões por expressões adimensionais a manter a mesma dimensão;
+
+Neste trabalho, foi desenvolvido todas as características da linguagem de modo a alcançar os 
+objetivos acima definidos. Para além das características minimas, a linguagem foi desenvolvida para permitir alguns
+objetivos desejáveis:
+- Permitir a definição de expressões booleanas
+- Incluir a instruição condicional (sobre expressões booleanas)
+- Incluir outras Instruções repetitivas (sobre expressões booleanas)
+- Permitir a definição de valores dimensionais literais com sufixo (Ex: Length l = 5m;)
+
+Para isto foram desenvolvidas quatro componentes que tratam de cada uma das fases de compilação:
+
+- Gramática principal da linguagem
+
+- Gramática secundária ( precompilador )
+
+- Análise Semântica 
+
+- Geração de código
+
+A gramática principal ( desenvolvida em ANTLR4 ) é responsável por receber o ficheiro de input e gerar os respétivos tokens ( a partir de um Lexer) e posteriormente uma árvore sintática ( a partir de um Parser).
+
+A gramática secundária tem como objetivo lidar com o a expressão 'use' que pretende importar um ficheiro de dimensões.
+Esta gramática é responsável por substituir qualquer ocorrência desta expressão pelo conteúdo do ficheiro respétivo, funcionando similarmente ao 'include' da linguagem C.
+
+Na análise semântica é feita a verificação de todos os requisitos da linguagem, nomeadamente a verificação de tipos, a verificação de dimensões e a verificação de variáveis não declaradas. Esta é fundamental para garantir que o código gerado é válido e que não existem erros de compilação e também que qualquer erro de utilizador ( ou má utilização da linguagem ) é reportado.
+
+A geração de código é feita através do padrão visitor do ANTLR4, que vai iterar a arvore sintática gerada pelo Parser nó a nó, fazendo a geração do código respétivo para cada nó. 
+Neste projeto usamos como target language a linguagem Java, pelo que o código gerado é código válido da linguagem Java.
+Para a geração de código foi utilizada a ferramenta StringTemplate4, que nos permitiu gerar código de forma simples e eficiente.
+
+No Documento REPORT.md ( presente na pasta doc ) é explicado com mais pormenor cada uma destas fases e cada requisito implementado e respetivos detalhes.
+
+
+## Como executar o programa
+
+No diretório examples, os scripts:
+
+- build.sh -> compilam todas as classes e gramáticas do ANTLR4 utilizadas
+
+- compile.sh -> compilam um exemplo em especifico. 
+
+Exemplo de utilização:
+
+``` ./compile.sh example1.da ```
+
+- run.sh -> executa o ficheiro Java resultante da compilação de um exemplo
+
+Exemplo de utilização:
+
+``` ./run.sh example1Compiled.da ```
 
 ## Contribuições
 

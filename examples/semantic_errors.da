@@ -63,3 +63,7 @@ Length g;
 g = real(read "OLA TESTE:")*metro;
 
 
+# ---------------------------------------------------------------
+# attempt at creating a unit for a dimension that doesnt exist
+
+unit Banana [ban,b] = 1.0*meter;

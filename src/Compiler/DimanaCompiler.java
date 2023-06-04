@@ -612,7 +612,6 @@ public class DimanaCompiler extends dimanaBaseVisitor<ST> {
       ST res = templates.getInstanceOf("stats");
       ctx.varName = newVar();
 
-      System.out.println(ctx.ID().getText());
       try {
          String dimension = declared_vars.get(ctx.ID().getText());
          String datatype = varMap.get(dimension).get(0);
