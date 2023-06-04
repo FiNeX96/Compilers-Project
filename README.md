@@ -90,7 +90,7 @@ Exemplo de utilização:
 
 Exemplo de utilização:
 
-``` ./run.sh example1Compiled.da ```
+``` ./run.sh example1Compiled ```
 
 ## Contribuições
 
