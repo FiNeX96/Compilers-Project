@@ -1,0 +1,29 @@
+
+# testing the get operator to get specific indexes in lists
+
+use "grades.da"; # Processed in compile time!
+integer N = 4;
+list[NMEC] nmecs = new list[NMEC]; # dynamic list of NMEC (first element has index 1)
+list[string] names = new list[string];
+list[Grade] grades = new list[Grade];
+integer i;
+
+
+# fill arrays 
+
+for i = 1 to N do 
+   integer(read "NMEC: ")*nmec >> nmecs; # add element to the end of list
+   read "Name: " >> names;
+   real(read "Grade: ")*val >> grades;
+end;
+
+
+# test for a dimension variable list
+
+NMEC n = get nmecs[3];
+writeln n;
+
+# test for a string list
+
+string s = get names[3];
+writeln s;

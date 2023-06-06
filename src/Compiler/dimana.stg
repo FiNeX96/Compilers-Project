@@ -1,0 +1,248 @@
+module(name,stat) ::= <<
+import java.util.*;
+//import java.io.*;
+
+public class <name> {
+
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in); /*para depois usar nos READS*/
+      <stats(stat)>
+      sc.close(); /*tem de fechar*/
+   }
+}
+>>
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+print(value) ::= <<
+System.out.print(<value>);
+>>
+
+println(value) ::= <<
+System.out.println(<value>);
+>>
+
+scanner_next(var) ::= <<
+<var> = sc.next();
+>>
+
+var_get(str,var,type) ::= <<
+<str> + <var>.getValue_<typeValue.(type)>() + " " + <var>.getSuffix()
+>>
+
+var_get_nostring(var,type) ::= <<
+<var>.getValue_<typeValue.(type)>() + " " + <var>.getSuffix()
+>>
+
+var_get_RA(var,type,length) ::= << 
+String.format("%<length>s",<var>.getValue_<typeValue.(type)>())
+>>
+
+var_get_RA_int(var,type,length) ::= <<
+String.format("%<length>s",<var>.getValue_<type>())
+>>
+
+string_RA(string,length) ::= <<
+String.format("%<length>s",<string>)
+>>
+
+arrayidx_getRA_nonvar(var,idx,length) ::= <<
+String.format("%<length>s",<var>.get(<idx>))
+>>
+
+arrayidx_getRA_var(var,idx,length,type) ::= <<
+String.format("%<length>s",<var>.get(<idx>).getValue_<typeValue.(type)>())
+>>
+
+expr_getRA(expr,length) ::= <<
+String.format("%<length>s",<expr>)
+>>
+
+print_RA_var(var,length,type) ::= <<
+System.out.print(String.format("%<length>s", <var>.getValue_<type>() );
+>>
+
+println_var(var,length,type) ::= <<
+System.out.println(String.format(%<length>s, <var>.getValue_<type>() );
+>>
+decl_with_value(type,var,value) ::= <<
+<typeValue.(type)> <var> = <value>;
+>>
+
+decl(type,var,value) ::= <<
+<typeValue.(type)> <var> <if(value)> = <value><endif>;
+>>
+
+decl_value(assign1,type,var,value) ::= <<
+<if(assign1)><assign1>;<endif>
+<typeValue.(type)> <var> = <value>;
+>>
+
+assign_scanner(var) ::= <<
+<var> = sc.nextLine();
+>>
+
+declare_list_dvar(var, type, unit) ::= <<
+ArrayList\<<type>\> <var> = new ArrayList\<<type>\>(); // List of <unit> ;
+<var>.add(null); // fill index 0 so it starts at 1
+>>
+
+declare_list_dtypes(var, type) ::= <<
+ArrayList\<<typeValue.(type)>\> <var> = new ArrayList\<<typeValue.(type)>\>(); // List of <type> ;
+<var>.add(null); // fill index 0 so it starts at 1
+>>
+
+typeValue ::= [
+   "integer":"int",
+   "real":"double",
+   "string":"String",
+   "double": "Double",
+   "int":"Int",
+   default:"null"
+]
+
+setValue::= [
+   "real" : "double",
+   "integer" : "integer",
+   "string" : "string",
+   "int":"integer",
+   default:"null"
+] 
+
+read_and_cast(type,var,temp) ::= <<
+System.out.print("Insert value into variable <var> (<typeValue.(type)>)  : ");
+<typeValue.(type)> <temp> = sc.next<typeValue.(typeValue.(type))>();
+<var>.setValue_<setValue.(type)>(<temp>);
+>>
+
+read_and_cast_toArray(type,var,temp,dimension,temp2) ::= <<
+System.out.print("Insert value into array <var> (<typeValue.(type)>)  : ");
+<typeValue.(type)> <temp> = sc.next<typeValue.(typeValue.(type))>();
+DimensionVar <temp2> = new DimensionVar("<dimension>",<temp>);
+<var>.add(<temp2>);
+>>
+
+read_toArray(var,temp,temp2)   ::= <<
+System.out.print("Insert value into array <var> (string) : ");
+String <temp> = sc.next();
+<var>.add(<temp>);
+>>
+
+read(var,temp)   ::= <<
+System.out.print("Insert value into variable <var> (string) : ");
+<var> = sc.next();
+>>
+
+for_loop(initial_value,end_value,statements) ::= <<
+for (i = <initial_value>; i \<= <end_value>; i++) {
+   <statements>
+}
+>>
+
+add_list(listname,value) ::= <<
+\<<listname>\>.add(<value>);
+>>
+
+return(value) ::= <<
+<value>;
+>>
+
+// unit = unidade da dimensão (ex: m, kg, s, etc)
+// name = nome da variável
+// value = quando tem valor inicial
+declare_var(unit,name,suffix) ::= <<
+DimensionVar <name> = new DimensionVar("<unit>");
+<name>.setSuffix("<suffix>");
+>>
+
+declare_var_with_value(assign1,unit,name,value,suffix) ::= <<
+<assign1>;
+DimensionVar <name> = new DimensionVar("<unit>",<value>);
+<name>.setSuffix("<suffix>");
+>>
+
+assign_1(initial_var,type,var,varName) ::= <<
+<initial_var>
+<var>.setValue_<typeValue.(type)>(<varName>);
+>>
+
+assign_2(initial_var,var,varName) ::= <<
+<initial_var>
+<var> = <varName>;
+>>
+
+assign_dvar(var_name, operando1, operando2, dataType, operacao,flag1,flag2) ::= <<
+<typeValue.(dataType)> <var_name> ;
+<var_name> = <operando1><if(flag1)>.getValue_<typeValue.(dataType)>()<endif> <operacao> <operando2><if(flag2)>.getValue_<typeValue.(dataType)>()<endif>;
+>>
+
+binaryOperation(type,var,e1,op,e2) ::= "<decl(type,var,[e1,\" \",op,\" \",e2])>"
+   
+declString(var, value) ::= <<
+   String <var> = "<value>";
+>>
+
+declStringPlus(var, value1, value2, value3) ::= <<
+   String <var> = <value1> + "<value2>" + <value3>;
+>>
+
+var_setValue(var,value,type) ::= <<
+<typeValue.(type)> <var>;
+<var> = <value>;
+>>
+
+conversionToInt(assign1,assign2,name,value) ::= <<
+<assign1>
+<assign2>
+int <name> = Integer.parseInt(String.valueOf(<value>));
+>>
+
+conversionToDouble(assign1,assign2,name,value) ::= <<
+<assign1>
+<assign2>
+double <name> = Double.parseDouble(String.valueOf(<value>));
+>>
+
+conversionToString(assign1,assign2,name,value) ::= <<
+<assign1>
+<assign2>
+String <name> = String.valueOf(<value>);
+>>
+
+ifcondicion(assign1,assign2,cond,statementsTrue,statementsFalse) ::= <<
+<assign1>
+<assign2>
+if (<cond>) {
+   <statementsTrue>
+} else {
+   <statementsFalse>
+}
+>>
+
+while_loop(regen_val,assign1,assign2,cond,statements,break,continue) ::= <<
+<assign1>;
+<assign2>;
+while (<cond>) {
+   <statements>
+   <regen_val>
+   <if(break)><break><endif>
+   <if(continue)><continue><endif>
+}
+>>
+
+do_while_loop(regen_val,assign1,assign2,cond,statements,break,continue) ::= <<
+<assign1>;
+<assign2>;
+do {
+   <statements>
+   <regen_val>
+   <if(break)><break><endif>
+   <if(continue)><continue><endif>
+} while (<cond>);
+>>
+
+get_array_idx(var,array,idx,type,flag) ::= <<
+<typeValue.(type)> <var> = <array>.get(<idx>)<if(flag)>.getValue_<typeValue.(type)>()<endif>
+>>

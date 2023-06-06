@@ -1,0 +1,10 @@
+dimension real Length [meter,m];
+dimension real Area = Length*Length;
+
+
+# basic multiplication of two variables of the same dimension 
+
+Length x = 3.0*meter;
+Length y = 5.0*meter;
+Area a = x*y;
+write a;

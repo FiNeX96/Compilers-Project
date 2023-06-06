@@ -1,0 +1,10 @@
+dimension real Length [meter,m];
+dimension real Area = Length*Length;
+unit Length [inch,in] = 0.0254*meter;
+
+# basic multiplication of two variables of the same dimension, but one has a alternative unit instead of the SI unit
+
+Length x = 3.0*inch;
+Length y = 5.0*meter;
+Area a = x*y;
+write a;

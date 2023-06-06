@@ -1,0 +1,8 @@
+
+
+real n;
+integer m = 3;
+integer x = 4;
+integer y = 5;
+n = real(m+y+x);
+write n;

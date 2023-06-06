@@ -1,0 +1,42 @@
+Alternativas para o use:
+
+
+- Bash script que troca o "use" pelo conteudo do ficheiro ( num ficheiro novo temporario ) e corre esse para o antlr
+
+
+- Ter algum preprocessador que faça basicamente o mesmo que acima
+
+- Criar varias arvores sintaticas ( uma pro programa em si e mais uma para cada use ) e depois juntar tudo numa so arvore sintatica 
+
+
+Por enquanto: 
+
+ignorar qualquer use ( tipo exemplo 0 )
+
+
+
+Ver: 
+
+- Como gerir as classes das dimensões ( é preciso pelo menos uma para a dimensão em si e outra que seja uma instancia de uma dimensão)
+
+
+
+Area = length * length
+
+
+length l1 = 10 
+length l2 = 5
+
+Area a1 = l1/l2
+
+
+Aceleração = velocidade * tempo
+Nao existem definições recursivas, velocidade tem de existir pra isto funcionar
+
+
+
+
+
+
+
+

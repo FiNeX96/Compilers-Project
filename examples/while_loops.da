@@ -1,0 +1,24 @@
+integer N = 4;
+
+# do while loop
+do {
+    N = N + 1;
+    writeln N;
+    procede;
+} while (N < 6);
+
+
+# while loop
+while (N < 7) {
+    N = N + 1;
+    writeln N;
+};
+
+# if statement
+if (N < 5) {
+    N = 300 ;
+};
+
+
+
+

@@ -1,0 +1,11 @@
+
+# example of text concatenation 
+
+string s = "ola";
+string s2 = " BEM VINDOS AO PINGO DOCE";
+string s3 = " HOW MAY I TAKE YOUR ORDER? ";
+string s4 = s + s2 + s3;
+writeln s;
+writeln s2;
+writeln s3;
+writeln s4;

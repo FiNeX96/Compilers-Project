@@ -1,0 +1,69 @@
+
+# variable with Java ( target language ) reserved name  
+
+integer abstract = 3;
+
+# ---------------------------------------------------------------
+
+dimension real Length [meter,m];
+dimension real Area = Length*Length;
+
+# trying to assign a expression of dimension Length + Length ( = Length ) to a Area
+
+Length x = 3.0*meter;
+Length y = 5.0*meter;
+Area a = x + y;
+write a;
+
+# ---------------------------------------------------------------
+# attempt at assigning a expression from a dimension ( that in this case, is not declared , would be Volume = Length*Length*Length) 
+# to a variable of a different dimension (Area = Length*Length)
+
+Length l; 
+Length v;
+Length a; # "redefinition" of variable a will work here because it doesnt get defined in "Area a = x + y;" because it has a semantic error
+Area c;
+
+
+l = 10*meter;
+v = 5*meter;
+a = 2*meter; 
+c = l*v*a;
+
+# ---------------------------------------------------------------
+# duplicate variable
+
+Area a; # now it should give a semantic error because a is already defined in the example above
+
+# ---------------------------------------------------------------
+# attempt at declaring a variable with a suffix that is not defined ( corresponding dimension is not defined )
+
+dimension real Length [meter,m];
+dimension real Time [second,s];
+dimension real Mass [gram,g];
+
+
+Length p = 5.0m;
+Time t = 10.0s;
+Mass m = 100.0g;
+Temperature T = 20.0K; # missing dimension that has this suffix
+
+# ---------------------------------------------------------------
+# trying to declare a list with a type and elements of it with another
+
+dimension integer NMEC [nmec];
+dimension real Grade [val];
+
+list[NMEC] nmecs = new list[Grade]; 
+
+# ---------------------------------------------------------------
+# attempt at casting g ( a Length ) to a base unit thats not a Length ( metro, should be meter )
+
+Length g;
+g = real(read "OLA TESTE:")*metro;
+
+
+# ---------------------------------------------------------------
+# attempt at creating a unit for a dimension that doesnt exist
+
+unit Banana [ban,b] = 1.0*meter;
